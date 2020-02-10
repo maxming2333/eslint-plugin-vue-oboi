@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-oboi",
+  "name": "eslint-plugin-vue-oboi",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
