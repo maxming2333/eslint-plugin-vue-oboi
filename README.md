@@ -27,7 +27,7 @@ enforce all attributes to be on the same line.
 </template>
 ```
 
-### vue-oboi/attributes-single-line
+### vue-oboi/tag-delimiter-no-spaces
 
 enforce tag right delimiter no spaces.
 
