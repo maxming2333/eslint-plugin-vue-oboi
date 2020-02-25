@@ -11,6 +11,7 @@
 ## Premise
 
 Because this plugin and [vue/max-attributes-per-line](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/max-attributes-per-line.md) rules are conflicting drops
+
 So you must ensure that the `vue/max-attributes-per-line` rule is off
 
 ```js
