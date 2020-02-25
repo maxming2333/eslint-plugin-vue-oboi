@@ -8,6 +8,18 @@
 
 ![oboi](https://user-images.githubusercontent.com/8816730/74127556-ef3d0800-4c15-11ea-91e4-4d55707fe678.gif)
 
+## Premise
+
+Because this plugin and [vue/max-attributes-per-line](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/max-attributes-per-line.md) rules are conflicting drops
+So you must ensure that the `vue/max-attributes-per-line` rule is off
+
+```js
+// .eslintrc.js
+{
+  'vue/max-attributes-per-line': 'off',
+}
+```
+
 ## Rules
 
 ### vue-oboi/attributes-single-line
