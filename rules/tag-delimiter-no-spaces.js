@@ -14,7 +14,7 @@ module.exports = {
   },
   create(context) {
     const sourceCode = context.getSourceCode();
-    const options = context.options[0];
+    const options = context.options[0] || 'all';
     const template = context.parserServices.getTemplateBodyTokenStore && context.parserServices.getTemplateBodyTokenStore();
     const optionsReg = options === 'enter' ? /[\f|\t|\v|\r|\n]+/ : /[ ]+/;
 

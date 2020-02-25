@@ -9,7 +9,7 @@ module.exports = {
       rules: {
         'vue/max-attributes-per-line': 'off',
         'vue-oboi/attributes-single-line': 'error',
-        'vue-oboi/tag-delimiter-no-spaces': 'error',
+        'vue-oboi/tag-delimiter-no-spaces': ['error', 'all'],
       },
     },
   },

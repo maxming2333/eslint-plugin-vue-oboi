@@ -12,12 +12,53 @@
 
 Because this plugin and [vue/max-attributes-per-line](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/max-attributes-per-line.md) rules are conflicting drops
 
-So you must ensure that the `vue/max-attributes-per-line` rule is off
+So you must ensure turn off the `vue/max-attributes-per-line` rule
 
 ```js
 // .eslintrc.js
 {
   'vue/max-attributes-per-line': 'off',
+}
+```
+
+Since all properties are the same, it may cause the screen width to be exceeded
+
+Thus triggering rules [max-len](https://eslint.org/docs/rules/max-len) and [vue/max-len](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/max-len.md)
+
+If this happens, please turn off these two rules
+
+```js
+// .eslintrc.js
+{
+  'max-len': 'off',
+  'vue/max-len': 'off',
+}
+```
+
+## Usage
+
+Because the rules of this plugin may conflict with many different rules
+
+So it is recommended to reasonably disable other rules
+
+```js
+// .eslintrc.js
+module.exports = {
+  extends: [
+    'plugin:vue/recommended',
+  ],
+  rules: {
+    // Must to disable this rules
+    'vue/max-attributes-per-line': 'off',
+
+    // May need to disable these rules
+    'max-len': 'off',
+    'vue/max-len': 'off',
+
+    // Rules for this plugin
+    'vue-oboi/attributes-single-line': 'error',
+    'vue-oboi/tag-delimiter-no-spaces': ['error', 'all'],
+  },
 }
 ```
 
