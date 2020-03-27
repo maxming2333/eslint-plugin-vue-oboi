@@ -45,7 +45,7 @@ So it is recommended to reasonably disable other rules
 // .eslintrc.js
 module.exports = {
   extends: [
-    'plugin:vue/recommended',
+    'plugin:vue-oboi/recommended',
   ],
   rules: {
     // Must to disable this rules
@@ -95,6 +95,18 @@ enforce tag right delimiter no spaces.
   <div v-if="foo" class="bar"
   ></div>
 </template>
+```
+
+This rule is the same as the [`vue/html-closing-bracket-newline`](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/html-closing-bracket-newline.md) rule
+
+```js
+// .eslintrc.js
+{
+  'vue/html-closing-bracket-newline': ['error', {
+    'singleline': 'never',
+    'multiline': 'never'
+  }],
+}
 ```
 
 #### Option

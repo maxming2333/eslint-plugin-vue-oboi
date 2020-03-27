@@ -7,8 +7,10 @@ module.exports = {
     recommended: {
       plugins: [ 'vue-oboi' ],
       rules: {
-        'vue/max-attributes-per-line': 'off',
-        'vue-oboi/attributes-single-line': 'error',
+        'max-len': ['off'],
+        'vue/max-len': ['off'],
+        'vue/max-attributes-per-line': ['off'],
+        'vue-oboi/attributes-single-line': ['error'],
         'vue-oboi/tag-delimiter-no-spaces': ['error', 'all'],
       },
     },
