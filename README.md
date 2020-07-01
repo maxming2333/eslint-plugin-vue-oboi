@@ -50,14 +50,16 @@ module.exports = {
   rules: {
     // Must to disable this rules
     'vue/max-attributes-per-line': 'off',
+    'vue/attribute-hyphenation': 'off',
 
     // May need to disable these rules
     'max-len': 'off',
     'vue/max-len': 'off',
 
     // Rules for this plugin
-    'vue-oboi/attributes-single-line': 'error',
+    'vue-oboi/attributes-single-line': ['error'],
     'vue-oboi/tag-delimiter-no-spaces': ['error', 'all'],
+    'vue-oboi/attribute-hyphenation-with-tag': [ 'warn' ],
   },
 }
 ```
@@ -125,6 +127,39 @@ Example:
   'vue-oboi/tag-delimiter-no-spaces': ['error', 'all'],
 }
 ```
+
+### vue-oboi/attribute-hyphenation-with-tag
+
+This is just an extension for the [vue/attribute-hyphenation](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/attribute-hyphenation.md) rule, the option is extended by a `ignoreTag`, which is used to indicate that the rule is not run on the specified tag.
+
+When using this configuration:
+
+`"always", { "ignoreTag": [ "customTag" ] }`
+
+```vue
+<template>
+  <!-- ✓ GOOD -->
+  <custom-tag myProp="prop" :secondProp="prop2">Do not judge this tag</custom-tag>
+
+  <!-- ✗ BAD -->
+</template>
+```
+
+#### Option
+
+Only the usage of the `ignoreTag` option is explained here, other usages are the same as [vue/attribute-hyphenation](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/attribute-hyphenation.md)
+
+Example:
+
+```js
+// .eslintrc.js
+{
+  'vue-oboi/tag-delimiter-no-spaces': ['error', 'always', {
+    ignoreTag: [ 'customTag', 'user-face', 'img', 'a', 'DIV'],
+  }],
+}
+```
+
 
 ## License
 

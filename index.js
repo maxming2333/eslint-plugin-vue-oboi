@@ -2,6 +2,7 @@ module.exports = {
   rules: {
     'attributes-single-line': require('./rules/attributes-single-line.js'),
     'tag-delimiter-no-spaces': require('./rules/tag-delimiter-no-spaces.js'),
+    'attribute-hyphenation-with-tag': require('./rules/attribute-hyphenation-with-tag.js'),
   },
   configs: {
     recommended: {

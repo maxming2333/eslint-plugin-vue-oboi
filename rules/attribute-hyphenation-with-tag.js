@@ -1,6 +1,6 @@
 /**
  * @fileoverview Define a style for the props casing in templates.
- * @author Armano
+ * @author keroming
  */
 
 
