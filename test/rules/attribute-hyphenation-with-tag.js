@@ -63,11 +63,11 @@ ruleTester.run('vue-oboi/attribute-hyphenation-with-tag', rule, {
       code: `
         <template>
           <div>
-            <custom v-bind:propID="prop" :secondPropID="test"></custom>
+            <customTag v-bind:propID="prop" :secondPropID="test"></customTag>
           </div>
         </template>
       `,
-      options: [ 'always', { ignoreTag: [ 'custom' ] }],
+      options: [ 'always', { ignoreTag: [ 'custom-tag' ] }],
     },
   ],
 

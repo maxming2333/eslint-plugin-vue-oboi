@@ -107,7 +107,7 @@ module.exports = {
 
     function isIgnoredTag(value) {
       return ignoredTags.some(function(attr) {
-        return value.indexOf(eraseTextFormat(attr)) !== -1;
+        return attr === eraseTextFormat(value);
       });
     }
 
