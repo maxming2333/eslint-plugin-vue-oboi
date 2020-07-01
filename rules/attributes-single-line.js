@@ -47,7 +47,7 @@ module.exports = {
       VStartTag(node) {
         if (node.loc.start.line !== node.loc.end.line) {
           const groupAttrs = groupAttrsByLine(node);
-          groupAttrs.forEach((attrs, index, groupAttrs) => {
+          groupAttrs.forEach(attrs => {
             showErrors(attrs);
           });
         }
