@@ -14,6 +14,7 @@ module.exports = {
         'vue/max-attributes-per-line': 'off',
         'vue/attribute-hyphenation': 'off',
         'vue/singleline-html-element-content-newline': 'off',
+        'vue/multiline-html-element-content-newline': 'off',
         'vue-oboi/attributes-single-line': [ 'error' ],
         'vue-oboi/tag-delimiter-no-spaces': [ 'error', 'all' ],
         'vue-oboi/attribute-hyphenation-with-tag': [ 'warn' ],
