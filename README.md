@@ -51,6 +51,7 @@ module.exports = {
     // Must to disable this rules
     'vue/max-attributes-per-line': 'off',
     'vue/attribute-hyphenation': 'off',
+    'vue/singleline-html-element-content': 'off',
 
     // May need to disable these rules
     'max-len': 'off',
@@ -60,6 +61,7 @@ module.exports = {
     'vue-oboi/attributes-single-line': ['error'],
     'vue-oboi/tag-delimiter-no-spaces': ['error', 'all'],
     'vue-oboi/attribute-hyphenation-with-tag': [ 'warn' ],
+    'vue-oboi/singleline-html-element-content-inline': [ 'warn' ],
   },
 }
 ```
@@ -158,6 +160,41 @@ Example:
     ignoreTag: [ 'customTag', 'user-face', 'img', 'a', 'DIV'],
   }],
 }
+```
+
+
+### vue-oboi/singleline-html-element-content-inline
+
+This rule is the inverse of the [vue/singleline-html-element-content-newline](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/singleline-html-element-content-newline.md) rule
+
+This rule does not allow single-line components to use line break mode
+
+Such as `uni-app` application, line break and non-line break, the compilation results are different
+
+If you use the [vue/singleline-html-element-content-newline](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/singleline-html-element-content-newline.md) rule and the variables in the template are `null` or `undefined`, then the compiled template display the null or undefined string
+
+```vue
+<template>
+  <!-- ✔ GOOD -->
+  <div v-if="foo" class="bar">{{foo.bar}}</div>
+  <div v-if="foo" class="bar">xxx{{foo.bar}}</div>
+  <div v-if="foo" class="bar">xxx    {{foo.bar}}</div>
+  <div v-if="foo" class="bar">
+    xxx
+    {{foo.bar}}
+  </div>
+
+  <!-- ✘ BAD -->
+  <div v-if="foo" class="bar">
+    xxx
+  </div>
+  <div v-if="foo" class="bar">
+    {{foo.bar}}
+  </div>
+  <div v-if="foo" class="bar">
+    xxx    {{foo.bar}}
+  </div>
+</template>
 ```
 
 

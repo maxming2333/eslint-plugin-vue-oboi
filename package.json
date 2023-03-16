@@ -1,29 +1,31 @@
 {
   "name": "eslint-plugin-vue-oboi",
-  "version": "0.0.7",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha 'test/rules/**.js' --reporter dot"
+  "peerDependencies": {
+    "eslint": ">=7.0.0",
+    "eslint-plugin-vue": ">=6.2.2"
   },
-  "devDependencies": {
-    "eslint": "^7.3.1",
-    "eslint-config-alloy": "^3.7.3",
-    "eslint-config-egg": "^8.0.1",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "mocha": "^8.0.1"
-  },
-  "dependencies": {
-    "vue-eslint-parser": "^7.0.0"
-  },
+  "maintainers": [
+    {
+      "name": "keroming",
+      "email": "maxming2333@gmail.com"
+    }
+  ],
+  "author": "keroming <maxming2333@gmail.com>",
+  "homepage": "https://github.com/maxming2333/eslint-plugin-vue-oboi",
   "repository": {
     "type": "git",
-    "url": "git@github.com:maxming2333/eslint-plugin-vue-oboi.git"
+    "url": "git@github.com:maxming2333/eslint-plugin-vue-oboi.git",
+    "web": "https://github.com/maxming2333/eslint-plugin-vue-oboi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxming2333/eslint-plugin-vue-oboi/issues",
+    "email": "maxming2333@gmail.com"
   },
   "engines": {
     "node": ">=10.0.0"
   },
-  "author": "maxming2333@gmail.com",
   "license": "MIT"
 }
