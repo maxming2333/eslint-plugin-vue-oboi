@@ -9,6 +9,14 @@ function isSinglelineElement(element) {
   return element.loc.start.line === element.endTag.loc.start.line;
 }
 
+function isSingleChildElement(element) {
+  if (!element.children || !element.children.length) {
+    return false;
+  }
+
+  return !(element.children.every(elem => elem.type === 'VText' || elem.type === 'VExpressionContainer'));
+}
+
 /**
  * Check whether the given element is inline or not.
  * This ignores whitespaces, doesn't ignore comments.
@@ -124,7 +132,12 @@ module.exports = {
         if (ignoreWhenNoAttributes && elem.startTag.attributes.length === 0) {
           return;
         }
+
         if (elem.type !== 'VElement') {
+          return;
+        }
+
+        if (isSingleChildElement(elem)) {
           return;
         }
 
@@ -151,41 +164,45 @@ module.exports = {
         const contentFirst = template.getTokenAfter(elem.startTag, getTokenOption);
         const contentLast = template.getTokenBefore(elem.endTag, getTokenOption);
 
-        context.report({
-          node: template.getLastToken(elem.startTag),
-          loc: {
-            start: elem.startTag.loc.end,
-            end: contentFirst.loc.start,
-          },
-          messageId: 'unexpectedAfterClosingBracket',
-          data: {
-            name: elem.rawName,
-          },
-          fix(fixer) {
-            const range = [elem.startTag.range[1], contentFirst.range[0]];
-            return fixer.replaceTextRange(range, '');
-          },
-        });
+        if (elem.startTag.range[1] !== contentFirst.range[0]) {
+          context.report({
+            node: template.getLastToken(elem.startTag),
+            loc: {
+              start: elem.startTag.loc.end,
+              end: contentFirst.loc.start,
+            },
+            messageId: 'unexpectedAfterClosingBracket',
+            data: {
+              name: elem.rawName,
+            },
+            fix(fixer) {
+              const range = [elem.startTag.range[1], contentFirst.range[0]];
+              return fixer.replaceTextRange(range, '');
+            },
+          });
+        }
 
         if (isEmpty(elem, sourceCode)) {
           return;
         }
 
-        context.report({
-          node: template.getFirstToken(elem.endTag),
-          loc: {
-            start: contentLast.loc.end,
-            end: elem.endTag.loc.start,
-          },
-          messageId: 'unexpectedBeforeOpeningBracket',
-          data: {
-            name: elem.rawName,
-          },
-          fix(fixer) {
-            const range = [contentLast.range[1], elem.endTag.range[0]];
-            return fixer.replaceTextRange(range, '');
-          },
-        });
+        if (contentLast.range[1] !== elem.endTag.range[0]) {
+          context.report({
+            node: template.getFirstToken(elem.endTag),
+            loc: {
+              start: contentLast.loc.end,
+              end: elem.endTag.loc.start,
+            },
+            messageId: 'unexpectedBeforeOpeningBracket',
+            data: {
+              name: elem.rawName,
+            },
+            fix(fixer) {
+              const range = [contentLast.range[1], elem.endTag.range[0]];
+              return fixer.replaceTextRange(range, '');
+            },
+          });
+        }
       },
       'VElement:exit': function (node) {
         if (inIgnoreElement === node) {

@@ -51,7 +51,7 @@ module.exports = {
     // Must to disable this rules
     'vue/max-attributes-per-line': 'off',
     'vue/attribute-hyphenation': 'off',
-    'vue/singleline-html-element-content': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
 
     // May need to disable these rules
     'max-len': 'off',
